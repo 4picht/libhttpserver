@@ -853,7 +853,7 @@ int webserver::method_not_acceptable_page (const void *cls,
         (void *) NOT_METHOD_ERROR,
         MHD_RESPMEM_PERSISTENT);
     ret = MHD_queue_response (connection,
-        MHD_HTTP_METHOD_NOT_ACCEPTABLE,
+        MHD_HTTP_NOT_ACCEPTABLE,
         response);
     MHD_add_response_header (response,
         MHD_HTTP_HEADER_CONTENT_ENCODING,
