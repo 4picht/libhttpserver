@@ -337,7 +337,9 @@ void* webserver::select(void* self)
 		/*On unix, MHD_socket will be an int anyway.
 		On windows, the cast is safe because winsock ignores first argument to select*/
         ::select ((int) max + 1, &rs, &ws, &es, &timeout_value);
-        MHD_run (di->daemon);
+        if (MHD_run (di->daemon) != MHD_YES) {
+					di->ws->running = false;
+				}
 
         //EVENT SUPPLIERS DISPATCHING
         {
